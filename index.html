@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ÓGIN Distillery — The pure spirit of Swedish Lapland. Handcrafted gin and vodka from Boviken, where tradition meets innovation.">
+    <title>ÓGIN Distillery — The Pure Spirit of Swedish Lapland</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css?v=44">
+</head>
+<body>
+    <!-- Age Verification Modal -->
+    <div id="age-gate" class="age-gate">
+        <div class="age-gate-content">
+            <img src="images/ogin.svg" alt="ógin" class="age-gate-logo">
+            <h2>Welcome to ÓGIN Distillery</h2>
+            <p>You must be of legal drinking age in your country to enter this site.</p>
+            <div class="age-gate-buttons">
+                <button id="age-verify-yes" class="btn btn-primary">I am of legal age</button>
+                <button id="age-verify-no" class="btn btn-secondary">I am not</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div id="site-nav"></div>
+    <script src="js/nav.js"></script>
+
+    <main>
+        <!-- Hero Section -->
+        <div class="scroll-reveal-wrapper intro-scroll-wrapper">
+            <section class="hero">
+                <div class="hero-background">
+                    <div class="hero-overlay"></div>
+                    <video class="hero-video" autoplay muted loop playsinline>
+                        <source src="https://jakob-hosted-content.s3.us-east-1.amazonaws.com/ogin-film_2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="hero-content" style="display: none;">
+                    <h1 class="hero-title fade-up">The <em>pure spirit</em> of Swedish Lapland</h1>
+                    <p class="hero-subtitle fade-up delay-1">Where tradition meets innovation, one vintage at a time.</p>
+                    <a href="spirits.html" class="btn btn-primary fade-up delay-2">Discover Our Spirits</a>
+                </div>
+                <div class="hero-intro-content scroll-reveal-content">
+                    <div class="container">
+                        <span class="section-label intro-label">The Pure Spirit of Swedish Lapland</span>
+                        <p class="intro-text word-reveal">
+                            In Boviken, just outside Skellefteå in Swedish Lapland, we craft spirits <em class="hover-reveal" data-image="images/bee.jpg">in harmony with nature</em>. Beginning with the first shoots of spring and continuing through the changing seasons, we harvest fresh herbs, plants, and berries by hand—ensuring each gin is a reflection of the land.
+                        </p>
+                        <p class="intro-text word-reveal">
+                            Every bottle tells the story of <em>a year in Boviken</em>, capturing a unique moment in time.
+                        </p>
+                    </div>
+                </div>
+                <div class="hero-scroll">
+                    <span>Scroll</span>
+                    <div class="scroll-line"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Cursor Image (for hover effect) -->
+        <div class="cursor-image" id="cursorImage">
+            <img src="" alt="">
+        </div>
+
+        <!-- Featured Products -->
+        <div id="site-products"></div>
+        <script src="js/products.js"></script>
+
+        <!-- Story Teaser -->
+        <section class="section section-story">
+            <div class="story-split">
+                <div class="story-video fade-left">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://jakob-hosted-content.s3.us-east-1.amazonaws.com/3F9A6948_21_1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="story-content">
+                    <span class="section-label fade-up">Our Story</span>
+                    <h2 class="section-title fade-up delay-1">Born from the <em>untouched beauty</em> of Swedish Lapland</h2>
+                    <p class="fade-up delay-2">
+                        Our story begins with master distiller Jón Óskar, whose travels through Europe's distilleries sparked a profound inspiration. Along the way, he discovered something truly unique—the rare and remarkable Arctic Raspberry, found only in the wilds of our region.
+                    </p>
+                    <a href="story.html" class="link-arrow fade-up delay-3">
+                        Discover our journey
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cocktails -->
+        <section class="section section-cocktails">
+            <div class="container cocktails-header">
+                <div>
+                    <span class="section-label fade-up">Serve</span>
+                    <h2 class="section-title fade-up delay-1">Signature Cocktails</h2>
+                </div>
+                <div class="cocktails-nav fade-up delay-1">
+                    <button class="cocktails-arrow cocktails-prev" aria-label="Previous">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16 10H4M4 10L9 5M4 10L9 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="cocktails-arrow cocktails-next" aria-label="Next">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="cocktails-track">
+                <div class="cocktail-card cocktail-card-image">
+                    <img src="images/3F9A4784.jpeg" alt="Cocktail preparation">
+                </div>
+                <div class="cocktail-card">
+                    <div class="cocktail-number">01</div>
+                    <h3 class="cocktail-name">Arctic Raspberry Gimlet</h3>
+                    <span class="cocktail-spirit">ÓGIN Arctic</span>
+                    <ul class="cocktail-ingredients">
+                        <li>5cl ÓGIN Arctic</li>
+                        <li>5–6 leaves of bog myrtle</li>
+                        <li>3cl lime juice</li>
+                        <li>2cl simple syrup</li>
+                    </ul>
+                    <p class="cocktail-method">Garnish with arctic raspberries and bog myrtle. Serve over clear ice with cold neutral tonic water.</p>
+                </div>
+                <div class="cocktail-card">
+                    <div class="cocktail-number">02</div>
+                    <h3 class="cocktail-name">Cloud Sour</h3>
+                    <span class="cocktail-spirit">ÓGIN Cloud</span>
+                    <ul class="cocktail-ingredients">
+                        <li>5cl ÓGIN Cloud</li>
+                        <li>2 tbsp cloudberry jam</li>
+                        <li>2cl honey</li>
+                        <li>3cl egg white</li>
+                        <li>3cl lemon juice</li>
+                        <li>2 dashes Angostura bitters</li>
+                    </ul>
+                    <p class="cocktail-method">Mix all ingredients in shaker for creamy head. Top with soda water and salt. Garnish with rosemary and cloudberries.</p>
+                </div>
+                <div class="cocktail-card cocktail-card-image">
+                    <img src="images/3F9A0025.jpg" alt="Cocktail preparation">
+                </div>
+                <div class="cocktail-card">
+                    <div class="cocktail-number">03</div>
+                    <h3 class="cocktail-name">Nature &amp; Tonic</h3>
+                    <span class="cocktail-spirit">ÓGIN Nature</span>
+                    <ul class="cocktail-ingredients">
+                        <li>5cl ÓGIN Nature</li>
+                        <li>0.5cl lemon juice</li>
+                        <li>Arctic raspberries</li>
+                        <li>Pine shoots and bog myrtle</li>
+                    </ul>
+                    <p class="cocktail-method">Serve over clear ice with cold neutral tonic water. Alternative: substitute with rosemary, regular raspberries, and extra lemon.</p>
+                </div>
+                <div class="cocktail-card">
+                    <div class="cocktail-number">04</div>
+                    <h3 class="cocktail-name">Barrel Martini</h3>
+                    <span class="cocktail-spirit">ÓGIN Barrel</span>
+                    <ul class="cocktail-ingredients">
+                        <li>7cl ÓGIN Barrel</li>
+                        <li>1cl dry vermouth</li>
+                        <li>Olives</li>
+                    </ul>
+                    <p class="cocktail-method">Stir over clear ice carefully to limit dilution. Garnish with one or two olives.</p>
+                </div>
+                <div class="cocktail-card">
+                    <div class="cocktail-number">05</div>
+                    <h3 class="cocktail-name">Pink Gin Fizz</h3>
+                    <span class="cocktail-spirit">ÓGIN Pink</span>
+                    <ul class="cocktail-ingredients">
+                        <li>3cl ÓGIN Pink</li>
+                        <li>2cl Aperol</li>
+                        <li>2 dashes Angostura bitters</li>
+                        <li>2cl agave syrup</li>
+                        <li>3cl lemon juice</li>
+                        <li>3cl egg white</li>
+                        <li>10cl fruity sour beer</li>
+                        <li>6cl soda water</li>
+                    </ul>
+                    <p class="cocktail-method">Garnish with lingonberry salt.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vodka Teaser -->
+        <section class="section section-vodka">
+            <div class="story-split story-split-reverse">
+                <div class="story-image fade-right">
+                    <img src="images/oginvodka.jpg" alt="ÓGIN Barley Vodka">
+                </div>
+                <div class="story-content">
+                    <span class="section-label fade-up">The Vodka</span>
+                    <h2 class="section-title fade-up delay-1">Pure <em>Nordic barley</em>, distilled to perfection</h2>
+                    <p class="fade-up delay-2">
+                        Our vodka begins with the finest Nordic barley, grown in the mineral-rich soils of Swedish Lapland. Through careful distillation, we capture the essence of purity—a spirit so clean and smooth, it speaks for itself.
+                    </p>
+                    <a href="product-vodka.html" class="link-arrow fade-up delay-3">
+                        Discover the vodka
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Teaser -->
+        <section class="section section-process">
+            <div class="container">
+                <header class="section-header section-header-center">
+                    <span class="section-label fade-up">Our Process</span>
+                    <h2 class="section-title fade-up delay-1">From Nature to Glass</h2>
+                    <p class="section-description fade-up delay-2">
+                        Our spirits are made in harmony with nature, beginning with the first shoots of spring. The distillation process marries time-honored traditions with modern techniques, allowing the seasons to naturally guide the flavors.
+                    </p>
+                </header>
+
+                <div class="process-features">
+                    <div class="process-feature fade-left">
+                        <span class="process-number">01</span>
+                        <h3>Seasonal Foraging</h3>
+                        <p>Hand-picked herbs, plants, and berries harvested at their peak.</p>
+                    </div>
+                    <div class="process-feature fade-up delay-1">
+                        <span class="process-number">02</span>
+                        <h3>Traditional Distillation</h3>
+                        <p>Time-honored techniques meet modern precision in our copper stills.</p>
+                    </div>
+                    <div class="process-feature fade-right delay-2">
+                        <span class="process-number">03</span>
+                        <h3>Arctic Maturation</h3>
+                        <p>Swedish oak barrels and the cold of Lapland winter guide our spirits.</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: var(--space-3xl); margin-bottom: var(--space-sm); display: flex; justify-content: center;">
+                    <img src="images/signature.svg" alt="" class="fade-up" style="width: 360px; height: auto;">
+                </div>
+
+                <div class="section-cta fade-up">
+                    <a href="process.html" class="link-arrow">
+                        Explore our craft
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Awards (hidden) -->
+        <section class="section section-awards" style="display: none;">
+            <div class="story-split">
+                <div class="story-image fade-left">
+                    <img src="images/3F9A9598.jpg" alt="ÓGIN award-winning design details">
+                </div>
+                <div class="story-content">
+                    <span class="section-label fade-up">Recognition</span>
+                    <h2 class="section-title fade-up delay-1">Award-winning <em>design</em></h2>
+                    <p class="fade-up delay-2">
+                        Every detail of ÓGIN—from the hand-forged bottle caps to the embossed labels—is designed to reflect the craft within. That commitment to design has been recognized with both the <strong>Swedish Design Award</strong> and the <strong>German Design Award</strong>, honoring the union of Nordic aesthetics and artisan spirit-making.
+                    </p>
+                    <div class="awards-list fade-up delay-3">
+                        <div class="award-item">
+                            <span class="award-name">Swedish Design Award</span>
+                        </div>
+                        <div class="award-item">
+                            <span class="award-name">German Design Award</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter (hidden — uncomment to re-enable) -->
+        <section class="section section-newsletter" style="display: none;">
+            <div class="container container-narrow">
+                <div class="newsletter-box fade-up">
+                    <h2>Stay in the Spirit</h2>
+                    <p>Join our community for news, releases, and stories from Boviken.</p>
+                    <form class="newsletter-form" action="#" method="post">
+                        <input type="email" name="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                    <span class="newsletter-note">We respect your privacy. Unsubscribe anytime.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Full-bleed image (hidden) -->
+        <div class="full-bleed-image fade-up" style="display: none;">
+            <img src="images/jo-forging.jpg" alt="The forge at ÓGIN Distillery">
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="site-footer"></div>
+    <script src="js/footer.js"></script>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

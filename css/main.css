@@ -64,6 +64,7 @@
 
 html {
     font-size: 16px;
+    overflow-x: hidden;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -176,7 +177,11 @@ p {
 
 @media (max-width: 768px) {
     .section {
-        padding: var(--space-2xl) 0;
+        padding: var(--space-xl) 0;
+    }
+
+    .container {
+        padding: 0 var(--space-sm);
     }
 }
 
@@ -354,7 +359,7 @@ p {
 
 @media (max-width: 768px) {
     .header {
-        display: block;
+        display: none;
     }
 }
 
@@ -384,9 +389,9 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px 28px 60px;
+    padding: 35px 28px 60px;
     overflow: hidden;
-    clip-path: inset(0 52px calc(100% - 160px) 52px);
+    clip-path: inset(0 62px calc(100% - 110px) 62px);
     transition: clip-path 0.25s var(--ease-out-expo),
                 transform 0.2s var(--ease-out-expo);
     cursor: pointer;
@@ -399,14 +404,24 @@ p {
 .nav-strip.nav-bottom {
     top: auto;
     bottom: 0;
-    clip-path: inset(calc(100% - 280px) 52px 0 52px);
+    clip-path: inset(calc(100% - 110px) 62px 0 62px);
     transform: none;
-    padding: 60px 28px 30px;
+    padding: 60px 28px 20px;
     flex-direction: column-reverse;
+}
+
+.nav-strip.nav-bottom .nav-strip-logo {
+    margin-top: var(--space-xl);
+    margin-bottom: 0;
 }
 
 .nav-strip.nav-bottom:hover {
     clip-path: inset(0 0 0 0);
+}
+
+.nav-strip.nav-bottom .nav-strip-stamp {
+    bottom: auto;
+    top: 60px;
 }
 
 .nav-strip.nav-bottom.nav-hidden {
@@ -419,7 +434,7 @@ p {
 
 .nav-strip-logo {
     display: block;
-    width: 40px;
+    width: 30px;
     flex-shrink: 0;
     margin-bottom: var(--space-2xl);
 }
@@ -432,12 +447,29 @@ p {
     border-radius: 0;
 }
 
+.nav-strip-menu-label {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .nav-strip-menu-label {
+        display: block;
+        font-family: var(--font-heading);
+        font-size: 0.5rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
+        text-align: center;
+        margin-top: 8px;
+    }
+}
+
 .nav-strip-links {
     list-style: none;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-lg);
+    gap: 0;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.4s var(--ease-out) 0.1s,
@@ -449,6 +481,17 @@ p {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
+}
+
+.nav-strip-links li {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding: var(--space-sm) 0;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-strip-links li:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .nav-strip-links a {
@@ -466,6 +509,36 @@ p {
 .nav-strip-links a:hover,
 .nav-strip-links a.active {
     color: var(--color-white);
+}
+
+.nav-strip-instagram {
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: var(--space-md);
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-out) 0.1s, color 0.3s var(--ease-out);
+    pointer-events: none;
+}
+
+.nav-strip:hover .nav-strip-instagram,
+.nav-strip.expanded .nav-strip-instagram {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.nav-strip-instagram:hover {
+    color: var(--color-white);
+}
+
+.nav-strip-stamp {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: auto;
+    opacity: 0.5;
+    pointer-events: none;
+    filter: brightness(0) invert(1);
 }
 
 .nav-links {
@@ -540,7 +613,7 @@ p {
     right: 0;
     bottom: 0;
     z-index: 999;
-    background: var(--color-white);
+    background: #000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -566,7 +639,11 @@ p {
 .mobile-nav-links a {
     font-family: var(--font-serif);
     font-size: 2.5rem;
-    color: var(--color-charcoal);
+    color: var(--color-white);
+}
+
+.nav-toggle.active span {
+    background: var(--color-white);
 }
 
 @media (max-width: 768px) {
@@ -575,13 +652,45 @@ p {
     }
 
     .nav-strip {
-        display: none;
+        width: 140px;
+        clip-path: inset(0 35px calc(100% - 100px) 35px);
+        padding: 18px 16px 50px;
     }
 
-    .nav-toggle {
-        display: flex;
-        position: absolute;
-        right: var(--space-md);
+    .nav-strip:hover {
+        clip-path: inset(0 35px calc(100% - 100px) 35px);
+    }
+
+    .nav-strip-logo {
+        width: 28px;
+    }
+
+    .nav-strip-links li {
+        padding: 0.875rem 0;
+    }
+
+    .nav-strip.expanded,
+    .nav-strip.expanded:hover {
+        clip-path: inset(0 0 0 0);
+    }
+
+    .nav-strip.expanded .nav-strip-links {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .nav-strip.nav-bottom {
+        clip-path: inset(calc(100% - 100px) 35px 0 35px);
+    }
+
+    .nav-strip.nav-bottom:hover {
+        clip-path: inset(calc(100% - 100px) 35px 0 35px);
+    }
+
+    .nav-strip.nav-bottom.expanded,
+    .nav-strip.nav-bottom.expanded:hover {
+        clip-path: inset(0 0 0 0);
     }
 }
 
@@ -695,7 +804,7 @@ p {
     align-items: center;
     gap: var(--space-xs);
     color: var(--color-white);
-    opacity: 0.5;
+    opacity: 0.8;
     z-index: 2;
 }
 
@@ -740,13 +849,7 @@ p {
 }
 
 .products-stamp {
-    position: absolute;
-    right: calc(var(--space-lg) + 10vw);
-    top: calc(var(--space-xl) + 10vw);
-    width: 160px;
-    height: auto;
-    opacity: 0.12;
-    transition: filter 0.5s var(--ease-out);
+    display: none;
 }
 
 .section-stamp {
@@ -798,10 +901,22 @@ p {
     position: relative;
 }
 
+@media (max-width: 768px) {
+    .intro-scroll-wrapper {
+        height: 300vh;
+    }
+}
+
 /* Brand Moment — Dark word-reveal section for inner pages */
 .brand-moment-wrapper {
     height: 300vh;
     position: relative;
+}
+
+@media (max-width: 768px) {
+    .brand-moment-wrapper {
+        height: 250vh;
+    }
 }
 
 .brand-moment {
@@ -849,6 +964,31 @@ p {
 
 .brand-moment .intro-text {
     color: var(--color-charcoal);
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.reveal-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s var(--ease-out);
+    z-index: 1;
+}
+
+.reveal-icon img {
+    width: 150px;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .reveal-icon img {
+        width: 100px;
+    }
 }
 
 .hero-intro-content {
@@ -889,7 +1029,7 @@ p {
 
 .intro-text {
     font-family: var(--font-body);
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-size: clamp(1.125rem, 3vw, 2.25rem);
     font-weight: 300;
     line-height: 1.6;
     color: var(--color-white);
@@ -907,6 +1047,12 @@ p {
 .intro-text em,
 .intro-text i {
     font-style: italic;
+}
+
+@media (max-width: 900px) {
+    .intro-text {
+        text-align: center;
+    }
 }
 
 /* Word-by-word scroll reveal */
@@ -1172,8 +1318,26 @@ p {
 .product-card:nth-child(6) .product-hover-cta { color: #fff; border-color: #fff; }
 
 @media (max-width: 768px) {
-    .product-hover-card {
+    .products-stamp {
         display: none;
+    }
+
+    /* On mobile, trigger hover card via .in-view class instead of :hover */
+    .product-card-masked .product-hover-card {
+        transition: all 0.6s var(--ease-out-expo);
+    }
+
+    .product-card.in-view .product-hover-card {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    .product-card.in-view .product-mask {
+        transform: scale(12);
+    }
+
+    .product-card.in-view .product-image img {
+        transform: scale(1.06);
     }
 }
 
@@ -1237,13 +1401,16 @@ p {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--space-md);
     }
+    .product-card:nth-child(n) {
+        margin-top: 0;
+    }
 }
 
 @media (max-width: 560px) {
     .products-grid {
         grid-template-columns: 1fr;
-        max-width: 400px;
         gap: var(--space-lg);
+        padding: 0 var(--space-sm);
     }
     .product-card:nth-child(n) {
         margin-top: 0;
@@ -1303,6 +1470,8 @@ p {
         grid-template-columns: 1fr;
         min-height: auto;
     }
+    .story-split-reverse .story-image { order: unset; }
+    .story-split-reverse .story-content { order: unset; }
 }
 
 .story-image {
@@ -1344,9 +1513,31 @@ p {
     transform: scale(1.03);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     .story-image {
-        min-height: 450px;
+        min-height: 350px;
+    }
+
+    .story-video {
+        min-height: auto;
+        aspect-ratio: 3/4;
+    }
+
+    .story-video video {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        height: 100%;
+        min-width: 0;
+        min-height: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .story-image {
+        min-height: 60vh;
     }
 }
 
@@ -1366,7 +1557,7 @@ p {
 
 @media (max-width: 900px) {
     .story-content {
-        padding: var(--space-2xl) var(--space-md);
+        padding: var(--space-xl) var(--space-md);
     }
 }
 
@@ -1461,7 +1652,7 @@ p {
 }
 
 .process-feature h3 {
-    font-family: var(--font-body);
+    font-family: var(--font-heading);
     font-weight: 500;
     margin-bottom: var(--space-sm);
     font-size: 1.125rem;
@@ -1654,13 +1845,19 @@ p {
 
 @media (max-width: 768px) {
     .cocktail-card {
-        flex: 0 0 280px;
+        flex: 0 0 320px;
+    }
+    .cocktail-card-image {
+        display: none;
     }
     .cocktail-card:first-child {
         margin-left: var(--space-md);
     }
     .cocktail-card:last-child {
         margin-right: var(--space-md);
+    }
+    .cocktails-track {
+        padding-left: var(--space-md);
     }
 }
 
@@ -1857,6 +2054,12 @@ p {
     font-size: 0.75rem;
 }
 
+@media (max-width: 768px) {
+    .footer {
+        padding-bottom: var(--space-3xl);
+    }
+}
+
 /* --------------------------------------------------------------------------
    Animations & Effects — Subtle, elegant
    -------------------------------------------------------------------------- */
@@ -1912,6 +2115,19 @@ p {
 .fade-right.visible {
     opacity: 1;
     transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+    .js-loaded .fade-left,
+    .js-loaded .fade-right {
+        transform: translateY(40px);
+    }
+    .js-loaded .fade-left.visible,
+    .js-loaded .fade-right.visible,
+    .fade-left.visible,
+    .fade-right.visible {
+        transform: translateY(0);
+    }
 }
 
 .delay-1 { transition-delay: 0.15s; }

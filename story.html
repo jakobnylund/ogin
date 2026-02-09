@@ -8,10 +8,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/main.css?v=16">
-    <link rel="stylesheet" href="css/pages.css?v=14">
+    <link rel="stylesheet" href="css/main.css?v=51">
+    <link rel="stylesheet" href="css/pages.css?v=16">
 </head>
 <body>
     <!-- Navigation -->
@@ -31,7 +31,7 @@
         <section class="section-story">
             <div class="story-split">
                 <div class="story-image fade-left">
-                    <img src="images/3F9A9897.jpg" alt="Tradition meets innovation at ÓGIN Distillery">
+                    <img src="images/3F9A9897.jpg" alt="Tradition meets innovation at ÓGIN Distillery" loading="lazy">
                 </div>
                 <div class="story-content">
                     <span class="section-label fade-up">Tradition Meets Innovation</span>
@@ -46,7 +46,7 @@
         <section class="section-story">
             <div class="story-split story-split-reverse">
                 <div class="story-image fade-right">
-                    <img src="images/jo.jpg" alt="Master Distiller Jón Óskar">
+                    <img src="images/jo.jpg" alt="Master Distiller Jón Óskar" loading="lazy">
                 </div>
                 <div class="story-content">
                     <span class="section-label fade-up">The Journey</span>
@@ -62,6 +62,7 @@
             <div class="container container-narrow">
                 <blockquote class="story-quote fade-up">
                     <p>"I wanted to capture the purity of this place in a bottle—the clarity of the air, the freshness of the first spring growth, the wild beauty that surrounds us."</p>
+                    <img src="images/signature.svg" alt="" class="quote-signature">
                     <cite>— Jón Óskar, Master Distiller</cite>
                 </blockquote>
             </div>
@@ -71,7 +72,7 @@
         <section class="section-story">
             <div class="story-split">
                 <div class="story-image fade-left">
-                    <img src="images/L1070511.jpg" alt="Boviken landscape in Swedish Lapland">
+                    <img src="images/L1070511.jpg" alt="Boviken landscape in Swedish Lapland" loading="lazy">
                 </div>
                 <div class="story-content">
                     <span class="section-label fade-up">The Place</span>
@@ -119,8 +120,15 @@
         <!-- Koenigsegg Collaboration -->
         <section class="section-story">
             <div class="story-split story-split-reverse">
-                <div class="story-image fade-right">
-                    <img src="images/3F9A5846.jpg" alt="ÓGIN and Koenigsegg collaboration">
+                <div class="story-image fade-right" id="koenigsegg-media">
+                    <img src="images/3F9A5846.jpg" alt="ÓGIN and Koenigsegg collaboration" loading="lazy">
+                    <video id="koenigsegg-video" muted loop playsinline preload="none">
+                        <source src="https://jakob-hosted-content.s3.us-east-1.amazonaws.com/Sequence+02_16.mp4" type="video/mp4">
+                    </video>
+                    <div id="koenigsegg-indicator">
+                        <svg id="koenigsegg-icon-play" width="48" height="48" viewBox="0 0 48 48" fill="none"><polygon points="18,12 38,24 18,36" fill="white"/></svg>
+                        <svg id="koenigsegg-icon-pause" width="48" height="48" viewBox="0 0 48 48" fill="none" style="display:none;"><rect x="14" y="12" width="6" height="24" rx="1" fill="white"/><rect x="28" y="12" width="6" height="24" rx="1" fill="white"/></svg>
+                    </div>
                 </div>
                 <div class="story-content">
                     <span class="section-label fade-up">Collaboration</span>
@@ -128,6 +136,7 @@
                     <p class="fade-up delay-2">Our partnership with Koenigsegg is an example of how great things happen when passion meets dedication and attention to detail. Just like Koenigsegg pushes the limits in the car world with every little thing they do, we're all about the craft too.</p>
                     <p class="fade-up delay-3">Craft is at the heart of what we both do. Whether it's the engineering in a Koenigsegg beauty or the careful mix of flavours in our own creations, it all boils down to a shared love for quality and uniqueness.</p>
                     <p class="fade-up delay-4">ÓGIN will be serving guests at exclusive events and car shows around the world.</p>
+                    <button class="btn btn-outline fade-up delay-4" id="koenigsegg-play">Watch Video</button>
                 </div>
             </div>
         </section>
@@ -148,6 +157,60 @@
     <div id="site-footer"></div>
     <script src="js/footer.js"></script>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
+    <script>
+        (function() {
+            var btn = document.getElementById('koenigsegg-play');
+            var media = document.getElementById('koenigsegg-media');
+            var video = document.getElementById('koenigsegg-video');
+            if (!btn || !media || !video) return;
+            var playing = false;
+
+            btn.addEventListener('click', function() {
+                if (!playing) {
+                    playing = true;
+                    media.classList.add('video-active');
+                    if (window.innerWidth <= 900) {
+                        media.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    video.preload = 'auto';
+                    video.load();
+                    video.addEventListener('canplaythrough', function() {
+                        video.play();
+                    }, { once: true });
+                    btn.textContent = 'Close Video';
+                } else {
+                    playing = false;
+                    media.classList.remove('video-active');
+                    video.pause();
+                    video.currentTime = 0;
+                    btn.textContent = 'Watch Video';
+                }
+            });
+
+            var indicator = document.getElementById('koenigsegg-indicator');
+            var iconPlay = document.getElementById('koenigsegg-icon-play');
+            var iconPause = document.getElementById('koenigsegg-icon-pause');
+
+            function flashIcon(showPlay) {
+                iconPlay.style.display = showPlay ? 'block' : 'none';
+                iconPause.style.display = showPlay ? 'none' : 'block';
+                indicator.classList.remove('flash');
+                void indicator.offsetWidth;
+                indicator.classList.add('flash');
+            }
+
+            media.addEventListener('click', function() {
+                if (!playing) return;
+                if (video.paused) {
+                    video.play();
+                    flashIcon(false);
+                } else {
+                    video.pause();
+                    flashIcon(true);
+                }
+            });
+        })();
+    </script>
 </body>
 </html>

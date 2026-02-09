@@ -4,6 +4,66 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
+   Koenigsegg Video Reveal
+   -------------------------------------------------------------------------- */
+#koenigsegg-media {
+    transition: aspect-ratio 0.8s var(--ease-out-expo),
+                min-height 0.8s var(--ease-out-expo);
+}
+
+#koenigsegg-video {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+#koenigsegg-media.video-active {
+    aspect-ratio: 3/4;
+    min-height: 0;
+}
+
+#koenigsegg-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#koenigsegg-indicator.flash {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    animation: indicator-flash 0.7s ease forwards;
+}
+
+@keyframes indicator-flash {
+    0% { opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+#koenigsegg-media.video-active {
+    cursor: pointer;
+}
+
+#koenigsegg-media.video-active #koenigsegg-video {
+    opacity: 1;
+}
+
+#koenigsegg-media.video-active img {
+    opacity: 0;
+}
+
+/* --------------------------------------------------------------------------
    Header Dark Variant (for internal pages)
    -------------------------------------------------------------------------- */
 .header-dark {
@@ -30,6 +90,12 @@
     padding: calc(var(--header-height) + var(--space-3xl)) 0 var(--space-2xl);
     background: var(--color-white);
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    .page-hero {
+        padding: calc(var(--header-height) + var(--space-xl)) 0 var(--space-lg);
+    }
 }
 
 .page-hero .container {
@@ -297,87 +363,162 @@
 }
 
 /* --------------------------------------------------------------------------
-   Product Page — Editorial layout
+   Product Page — Editorial story-split layout
    -------------------------------------------------------------------------- */
-.product-hero {
-    padding: calc(var(--header-height) + var(--space-2xl)) 0 var(--space-3xl);
-    background: var(--color-white);
+.product-hero-story {
+    padding-top: 0;
 }
 
-.product-layout {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: var(--space-2xl);
-    align-items: start;
-    max-width: 1500px;
-    margin: 0 auto;
+.product-hero-story .story-content {
+    padding: var(--space-3xl) var(--space-xl);
 }
 
+.product-hero-story .story-content .section-label {
+    margin-bottom: var(--space-sm);
+}
+
+.product-hero-story .section-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: var(--space-sm);
+}
+
+.product-hero-story .product-headline {
+    margin-bottom: var(--space-lg);
+}
+
+.product-hero-story .product-specs {
+    padding: var(--space-md) 0;
+    margin-bottom: var(--space-lg);
+}
+
+.product-hero-story .product-description {
+    margin-bottom: var(--space-lg);
+}
+
+.product-hero-story .product-actions {
+    display: flex;
+}
+
+/* Product page mobile — hero, content, specs, accent image */
 @media (max-width: 900px) {
-    .product-layout {
-        grid-template-columns: 1fr;
-        gap: var(--space-xl);
+    .product-hero-story .story-image {
+        min-height: 75vh;
+    }
+
+    .product-hero-story .story-content {
+        padding: var(--space-lg) var(--space-md) var(--space-xl);
+    }
+
+    .product-specs {
+        gap: var(--space-lg);
+    }
+
+    .product-accent-image {
+        max-width: 100%;
+        aspect-ratio: 16/10;
+    }
+
+    .product-actions {
+        flex-direction: column;
+    }
+
+    .product-actions .btn {
+        width: 100%;
+        text-align: center;
     }
 }
 
-.product-gallery {
+@media (max-width: 480px) {
+    .product-hero-story .story-content {
+        padding: var(--space-md) var(--space-sm) var(--space-lg);
+    }
+
+    .product-specs {
+        gap: var(--space-md);
+    }
+
+    .spec-value {
+        font-size: 1.25rem;
+    }
 }
 
-.product-main-image {
-    aspect-ratio: 2/3;
-    background: var(--color-cream);
+/* Secondary accent image — above purchase button inside story-content */
+.product-accent-image {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    margin-bottom: var(--space-lg);
+    max-width: 380px;
 }
 
-.product-main-image img {
+.product-accent-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.product-image-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-serif);
-    font-size: 2rem;
-    color: var(--color-gray);
-    background: linear-gradient(180deg, var(--color-cream) 0%, #E8E6E3 100%);
+/* Dark theme for vodka — product section dark, cocktails stay white */
+body.product-dark {
+    background: var(--color-off-white);
 }
 
-.product-thumbnails {
-    display: flex;
-    gap: var(--space-sm);
+body.product-dark .product-hero-story {
+    background: var(--color-charcoal);
 }
 
-.thumbnail {
-    flex: 1;
-    aspect-ratio: 1;
-    background: var(--color-cream);
-    border: 1px solid transparent;
-    transition: border-color var(--duration-fast) var(--ease-out);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.6875rem;
-    letter-spacing: 0.05em;
-    color: var(--color-gray);
+
+body.product-dark .section-cocktails {
+    background: var(--color-off-white);
 }
 
-.thumbnail:hover,
-.thumbnail.active {
-    border-color: var(--color-charcoal);
+body.product-dark .story-content .section-label {
+    color: var(--color-copper);
 }
 
-.product-details {
-    padding: var(--space-xl) var(--space-2xl) var(--space-xl) 0;
+body.product-dark .story-content .section-title {
+    color: var(--color-white);
 }
 
-@media (max-width: 900px) {
-    .product-details {
-        padding: var(--space-lg) 0;
-    }
+body.product-dark .product-headline {
+    color: rgba(255,255,255,0.5);
+}
+
+body.product-dark .product-specs {
+    border-color: rgba(255,255,255,0.15);
+}
+
+body.product-dark .spec-label {
+    color: rgba(255,255,255,0.4);
+}
+
+body.product-dark .spec-value {
+    color: var(--color-white);
+}
+
+body.product-dark .product-description p {
+    color: rgba(255,255,255,0.6);
+}
+
+body.product-dark .product-hero-story .btn-primary {
+    background: var(--color-white);
+    color: var(--color-charcoal);
+}
+
+body.product-dark .product-hero-story .btn-primary:hover {
+    background: var(--color-copper);
+    color: var(--color-white);
+}
+
+body.product-dark .product-hero-story .btn-outline {
+    color: var(--color-white);
+    border-color: rgba(255,255,255,0.3);
+}
+
+body.product-dark .product-hero-story .btn-outline:hover {
+    background: var(--color-white);
+    color: var(--color-charcoal);
+    border-color: var(--color-white);
 }
 
 .product-type {
@@ -478,52 +619,32 @@
     background: var(--color-off-white);
 }
 
-.botanicals-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-xl);
-    max-width: 1200px;
+.botanicals-list {
+    list-style: none;
+    padding: 0;
+    max-width: 700px;
     margin: 0 auto;
 }
 
-@media (max-width: 768px) {
-    .botanicals-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-lg);
-    }
-}
-
-@media (max-width: 480px) {
-    .botanicals-grid {
-        grid-template-columns: 1fr;
-        max-width: 320px;
-    }
-}
-
-.botanical {
-    text-align: center;
+.botanicals-list li {
     padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-border);
 }
 
-.botanical-icon {
-    width: 48px;
-    height: 48px;
-    margin: 0 auto var(--space-md);
-    background: var(--color-white);
-    border-radius: 50%;
-    border: 1px solid var(--color-border);
+.botanicals-list li:last-child {
+    border-bottom: none;
 }
 
-.botanical h3 {
+.botanicals-list strong {
+    display: block;
+    font-family: var(--font-body);
     font-size: 1.125rem;
     margin-bottom: var(--space-xs);
 }
 
-.botanical p {
+.botanicals-list span {
     font-size: 0.9375rem;
     color: var(--color-gray);
-    max-width: 280px;
-    margin: 0 auto;
     line-height: 1.7;
 }
 
@@ -702,6 +823,16 @@
     line-height: 1.55;
     margin-bottom: var(--space-xl);
     max-width: none;
+}
+
+.quote-signature {
+    display: block;
+    width: 320px;
+    max-width: 60vw;
+    height: auto;
+    margin: 0 auto var(--space-md);
+    filter: brightness(0) invert(1);
+    opacity: 0.7;
 }
 
 .story-quote cite {
@@ -965,6 +1096,8 @@
    -------------------------------------------------------------------------- */
 .section-contact {
     background: var(--color-white);
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
 }
 
 .contact-grid {
@@ -1032,9 +1165,21 @@
 }
 
 .contact-info {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: var(--space-xl);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+.contact-block {
+    text-align: center;
 }
 
 .contact-block h3 {
@@ -1366,4 +1511,123 @@
     background: var(--color-white);
     color: var(--color-charcoal);
     border-color: var(--color-white);
+}
+
+/* --------------------------------------------------------------------------
+   Product Gallery — Scattered editorial images (like vibe page)
+   -------------------------------------------------------------------------- */
+.product-gallery {
+    position: relative;
+    width: 100%;
+    padding: 10vh 0 15vh;
+    overflow: hidden;
+    transition: background-color 0s;
+    z-index: 3;
+}
+
+.product-gallery-icon {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 26vh;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 10;
+    transition: opacity 0.15s ease;
+    mix-blend-mode: exclusion;
+}
+
+.product-gallery-icon.visible {
+    opacity: 1;
+}
+
+.product-gallery-icon img {
+    width: 100%;
+    height: auto;
+}
+
+.product-gallery-icon svg.icon-circle-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 175%;
+    height: 175%;
+}
+
+.product-gallery-icon svg.icon-circle-text text {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-style: italic;
+    letter-spacing: 0.12em;
+    fill: #777;
+}
+
+
+.product-gallery-img {
+    position: relative;
+    z-index: 1;
+    transform: translateY(60px);
+    will-change: transform;
+}
+
+.product-gallery-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.product-gallery-img:nth-child(1) { width: 42vw; margin-left: 5vw;  margin-bottom: -6vh;  z-index: 1; }
+.product-gallery-img:nth-child(2) { width: 30vw; margin-left: 58vw; margin-bottom: 8vh;   z-index: 2; }
+.product-gallery-img:nth-child(3) { width: 38vw; margin-left: 20vw; margin-bottom: -10vh; z-index: 1; }
+.product-gallery-img:nth-child(4) { width: 28vw; margin-left: 60vw; margin-bottom: 6vh;   z-index: 2; }
+.product-gallery-img:nth-child(5) { width: 30vw; margin-left: 3vw;  margin-bottom: -8vh;  z-index: 1; }
+.product-gallery-img:nth-child(6) { width: 26vw; margin-left: 58vw; margin-bottom: 10vh;  z-index: 2; }
+.product-gallery-img:nth-child(7) { width: 34vw; margin-left: 18vw; margin-bottom: -12vh; z-index: 1; }
+.product-gallery-img:nth-child(8) { width: 24vw; margin-left: 64vw; margin-bottom: 5vh;   z-index: 2; }
+.product-gallery-img:nth-child(9) { width: 30vw; margin-left: 8vw;  margin-bottom: 8vh;   z-index: 1; }
+
+@media (max-width: 768px) {
+    .product-gallery {
+        padding: 4vh 0 8vh;
+    }
+
+    .product-gallery-icon {
+        width: 24vh;
+    }
+
+    .product-gallery-icon svg.icon-circle-text {
+        width: 175%;
+        height: 175%;
+    }
+
+    .product-gallery-img:nth-child(n) {
+        width: 78vw !important;
+        margin-left: 11vw !important;
+        margin-bottom: 3vh !important;
+        z-index: 1 !important;
+    }
+
+    .product-gallery-img:nth-child(2n) {
+        width: 58vw !important;
+        margin-left: 34vw !important;
+    }
+
+    .product-gallery-img:nth-child(3n) {
+        width: 62vw !important;
+        margin-left: 4vw !important;
+    }
+}
+
+.gallery-botanical {
+    position: absolute;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: clamp(1.5rem, 3.5vw, 3rem);
+    color: rgba(255, 255, 255, 0.45);
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 0;
+    mix-blend-mode: exclusion;
 }

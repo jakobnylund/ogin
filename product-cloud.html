@@ -8,10 +8,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/main.css?v=16">
-    <link rel="stylesheet" href="css/pages.css?v=15">
+    <link rel="stylesheet" href="css/main.css?v=51">
+    <link rel="stylesheet" href="css/pages.css?v=19">
 </head>
 <body>
     <!-- Navigation -->
@@ -19,87 +19,62 @@
     <script src="js/nav.js"></script>
 
     <main>
-        <section class="product-hero">
-            <div class="container">
-                <div class="product-layout">
-                    <div class="product-gallery fade-up">
-                        <div class="product-main-image">
-                            <img src="images/cloud.jpg" alt="ÓGIN Cloud">
+        <section class="section-story product-hero-story">
+            <div class="story-split">
+                <div class="story-image fade-left">
+                    <img src="images/cloud-secondary.jpg" alt="ÓGIN Cloud" loading="lazy">
+                </div>
+                <div class="story-content">
+                    <span class="section-label fade-up">Gin</span>
+                    <h2 class="section-title fade-up delay-1">ÓGIN Cloud</h2>
+                    <p class="product-headline fade-up delay-1">Nordic Gold</p>
+
+                    <div class="product-specs fade-up delay-2">
+                        <div class="spec">
+                            <span class="spec-label">ABV</span>
+                            <span class="spec-value">47%</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec-label">Volume</span>
+                            <span class="spec-value">75cl</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec-label">Vintage</span>
+                            <span class="spec-value">2024</span>
                         </div>
                     </div>
 
-                    <div class="product-details">
-                        <span class="product-type fade-up">Gin</span>
-                        <h1 class="product-title fade-up delay-1">ÓGIN Cloud</h1>
-                        <p class="product-headline fade-up delay-2">Nordic Gold</p>
+                    <div class="product-description fade-up delay-3">
+                        <p>Sun-ripened cloudberries define the flavor and color. Aged in string casks before cloudberries are added, finished in Swedish oak barrels. A spirit as unique as the land it comes from—golden, complex, and utterly distinctive.</p>
+                    </div>
 
-                        <div class="product-specs fade-up delay-2">
-                            <div class="spec">
-                                <span class="spec-label">ABV</span>
-                                <span class="spec-value">47%</span>
-                            </div>
-                            <div class="spec">
-                                <span class="spec-label">Volume</span>
-                                <span class="spec-value">70cl</span>
-                            </div>
-                            <div class="spec">
-                                <span class="spec-label">Vintage</span>
-                                <span class="spec-value">2024</span>
-                            </div>
-                        </div>
+                    <div class="product-accent-image fade-up delay-3">
+                        <img src="images/cloud.jpg" alt="" loading="lazy">
+                    </div>
 
-                        <div class="product-description fade-up delay-3">
-                            <p>Sun-ripened cloudberries define the flavor and color. Aged in string casks before cloudberries are added, finished in Swedish oak barrels. A spirit as unique as the land it comes from—golden, complex, and utterly distinctive.</p>
-                        </div>
-
-                        <div class="product-actions fade-up delay-3">
-                            <a href="shop.html" class="btn btn-primary">Purchase</a>
-                        </div>
+                    <div class="product-actions fade-up delay-4">
+                        <a href="https://www.systembolaget.se/produkt/sprit/ogin-cloud-8593701/" target="_blank" rel="noopener" class="btn btn-primary">Systembolaget</a>
+                        <a href="contact.html" class="btn btn-outline">Distributors</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section section-botanicals">
-            <div class="container">
-                <header class="section-header section-header-center">
-                    <span class="section-label fade-up">Ingredients</span>
-                    <h2 class="section-title fade-up delay-1">The Botanicals</h2>
-                </header>
-                <div class="botanicals-grid">
-                    <div class="botanical fade-up">
-                        <div class="botanical-icon"></div>
-                        <h3>Cloudberries</h3>
-                        <p>The "gold of the Arctic"—rare berries with honeyed, apricot-like sweetness.</p>
-                    </div>
-                    <div class="botanical fade-up delay-1">
-                        <div class="botanical-icon"></div>
-                        <h3>Swedish Oak</h3>
-                        <p>Barrel aging adds vanilla, caramel, and subtle spice notes.</p>
-                    </div>
-                    <div class="botanical fade-up delay-2">
-                        <div class="botanical-icon"></div>
-                        <h3>Northern Juniper</h3>
-                        <p>The gin backbone, providing structure beneath the golden fruit.</p>
-                    </div>
-                    <div class="botanical fade-up delay-3">
-                        <div class="botanical-icon"></div>
-                        <h3>Bog Myrtle</h3>
-                        <p>Aromatic complexity balancing the cloudberry sweetness.</p>
-                    </div>
-                    <div class="botanical fade-up">
-                        <div class="botanical-icon"></div>
-                        <h3>Meadowsweet</h3>
-                        <p>Floral notes that complement the honeyed fruit character.</p>
-                    </div>
-                    <div class="botanical fade-up delay-1">
-                        <div class="botanical-icon"></div>
-                        <h3>Coriander</h3>
-                        <p>Citrus and spice notes adding depth and brightness.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- Gallery -->
+        <div class="product-gallery-icon">
+            <img src="images/cloud-icon.png" alt="">
+            <svg class="icon-circle-text" viewBox="0 0 300 300">
+                <defs><path id="cloud-circle" d="M150,150 m-120,0 a120,120 0 1,1 240,0 a120,120 0 1,1 -240,0"/></defs>
+                <text><textPath href="#cloud-circle">Golden cloudberries kissed by the midnight sun · Nordic gold from the Arctic highlands · Sun-ripened and aged in Swedish oak ·</textPath></text>
+            </svg>
+        </div>
+        <div class="product-gallery">
+            <div class="product-gallery-img"><img src="images/cloud/3F9A4768-2.jpg" alt="" loading="lazy"></div>
+            <div class="product-gallery-img"><img src="images/cloud/3F9A4863.jpg" alt="" loading="lazy"></div>
+            <div class="product-gallery-img"><img src="images/cloud/3F9A4882.jpg" alt="" loading="lazy"></div>
+            <div class="product-gallery-img"><img src="images/cloud/etoile-post.png" alt="" loading="lazy"></div>
+
+        </div>
 
         <!-- Cocktails -->
         <section class="section section-cocktails">
@@ -123,7 +98,7 @@
             </div>
             <div class="cocktails-track">
                 <div class="cocktail-card cocktail-card-image">
-                    <img src="images/3F9A4784.jpeg" alt="Cocktail preparation">
+                    <img src="images/3F9A4784.jpeg" alt="Cocktail preparation" loading="lazy">
                 </div>
                 <div class="cocktail-card">
                     <div class="cocktail-number">01</div>
@@ -152,7 +127,7 @@
                     <p class="cocktail-method">Mix all ingredients in shaker for creamy head. Top with soda water and salt. Garnish with rosemary and cloudberries.</p>
                 </div>
                 <div class="cocktail-card cocktail-card-image">
-                    <img src="images/3F9A0025.jpg" alt="Cocktail preparation">
+                    <img src="images/3F9A0025.jpg" alt="Cocktail preparation" loading="lazy">
                 </div>
                 <div class="cocktail-card">
                     <div class="cocktail-number">03</div>
@@ -199,6 +174,82 @@
 
     <div id="site-footer"></div>
     <script src="js/footer.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
+    <script>
+        // Product gallery parallax + background fade
+        (function() {
+            var gallery = document.querySelector('.product-gallery');
+            var imgs = document.querySelectorAll('.product-gallery-img');
+            if (!imgs.length || !gallery) return;
+            var state = new Map();
+            var depths = [0.15, 0.85, 0.4, 0.95];
+            imgs.forEach(function(el, i) {
+                var depth = depths[i % depths.length];
+                var lerp = 0.02 + depth * 0.07;
+                var range = 15 + depth * 280;
+                state.set(el, { y: 0, lerp: lerp, range: range });
+            });
+
+            var bgLerp = 0;
+
+            function tick() {
+                var vh = window.innerHeight;
+                var rect = gallery.getBoundingClientRect();
+                var top = rect.top;
+                var bottom = rect.bottom;
+
+                // Fade in as gallery enters viewport, fade out as it leaves
+                var progress = 0;
+                if (top < vh && bottom > 0) {
+                    // How far into the viewport the gallery is (0 = just entering, 1 = fully in)
+                    var enterProgress = Math.max(0, Math.min(1, (0 - top) / (vh * 1.0)));
+                    // How close to leaving (1 = still in, 0 = leaving)
+                    var exitProgress = Math.min(1, bottom / (vh * 0.5));
+                    progress = Math.min(enterProgress, exitProgress);
+                }
+                progress = Math.max(0, Math.min(1, progress));
+
+                // Smooth lerp for the background
+                bgLerp += (progress - bgLerp) * 0.03;
+                var alpha = bgLerp;
+                gallery.style.backgroundColor = 'rgba(255, 182, 107, ' + alpha.toFixed(3) + ')';
+
+                // Parallax drift
+                imgs.forEach(function(el) {
+                    var s = state.get(el);
+                    var r = el.getBoundingClientRect();
+                    var center = r.top + r.height / 2;
+                    var p = (center - vh / 2) / vh;
+                    var targetY = p * s.range;
+                    s.y += (targetY - s.y) * s.lerp;
+                    el.style.transform = 'translateY(' + s.y + 'px)';
+                });
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        })();
+
+        // Icon visibility + scroll rotation
+        (function() {
+            var icon = document.querySelector('.product-gallery-icon');
+            var gallery = document.querySelector('.product-gallery');
+            var circle = icon ? icon.querySelector('.icon-circle-text') : null;
+            if (!icon || !gallery) return;
+            var wasVisible = false;
+            window.addEventListener('scroll', function() {
+                var rect = gallery.getBoundingClientRect();
+                var vh = window.innerHeight;
+                var visible = rect.top < vh * 0.5 && rect.bottom > vh * 0.3;
+                if (visible !== wasVisible) {
+                    icon.classList.toggle('visible', visible);
+                    wasVisible = visible;
+                }
+                if (circle) {
+                    var deg = window.scrollY * 0.08;
+                    circle.style.transform = 'translate(-50%, -50%) rotate(' + deg + 'deg)';
+                }
+            }, { passive: true });
+        })();
+    </script>
 </body>
 </html>

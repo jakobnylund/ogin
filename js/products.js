@@ -20,7 +20,7 @@
             name: 'ÓGIN Nature',
             desc: 'The first botanicals of spring, captured at their most vibrant.',
             tagline: 'The first botanicals of spring, captured at their most vibrant.',
-            abv: '41% ABV · 70cl',
+            abv: '41% ABV · 75cl',
             color: '#FFFFFF',
             anim: 'fade-left'
         },
@@ -33,7 +33,7 @@
             name: 'ÓGIN Arctic',
             desc: 'Bold and untamed, like the frozen wilderness itself.',
             tagline: 'Bold and untamed, like the frozen wilderness itself.',
-            abv: '45.5% ABV · 70cl',
+            abv: '45.5% ABV · 75cl',
             color: '#3D1515',
             anim: 'fade-up delay-1'
         },
@@ -46,7 +46,7 @@
             name: 'ÓGIN Cloud',
             desc: 'Nordic gold, kissed by cloudberries from the Arctic highlands.',
             tagline: 'Nordic gold, kissed by cloudberries from the Arctic highlands.',
-            abv: '47% ABV · 70cl',
+            abv: '47% ABV · 75cl',
             color: '#FAAA60',
             anim: 'fade-right delay-2'
         },
@@ -59,7 +59,7 @@
             name: 'ÓGIN Barrel',
             desc: 'Rested in Swedish oak through the long Arctic winter.',
             tagline: 'Rested in Swedish oak through the long Arctic winter.',
-            abv: '43.5% ABV · 70cl',
+            abv: '43.5% ABV · 75cl',
             color: '#FFFACD',
             anim: 'fade-left'
         },
@@ -72,7 +72,7 @@
             name: 'ÓGIN Pink',
             desc: 'Arctic raspberry meets wild rose in this rare creation.',
             tagline: 'Wild strawberries and rose from the distiller\'s own garden.',
-            abv: '40% ABV · 70cl',
+            abv: '40% ABV · 75cl',
             color: '#E8A0B0',
             anim: 'fade-up delay-1'
         },
@@ -85,7 +85,7 @@
             name: 'ÓGIN Barley Vodka',
             desc: 'Pure Nordic barley, distilled to silken perfection.',
             tagline: 'Pure Nordic barley, distilled to silken perfection.',
-            abv: '41% ABV · 70cl',
+            abv: '41% ABV · 75cl',
             color: '#0A0A0A',
             anim: 'fade-right delay-2'
         }
@@ -95,7 +95,7 @@
         return `
                     <a href="${p.href}" class="product-card product-card-masked ${p.anim}" data-color="${p.color}">
                         <div class="product-image">
-                            <img src="${p.image}" alt="${p.name}">
+                            <img src="${p.image}" alt="${p.name}" loading="lazy">
                             <img src="${p.mask}" alt="" class="product-mask">
                             <div class="product-hover-card">
                                 <img src="${p.icon}" alt="" class="product-hover-icon">

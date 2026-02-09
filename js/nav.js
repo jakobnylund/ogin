@@ -23,14 +23,19 @@
     <div class="nav-strip">
         <a href="/" class="nav-strip-logo">
             <img src="images/silhouette.svg" alt="ógin">
+            <span class="nav-strip-menu-label">Menu</span>
         </a>
         <ul class="nav-strip-links">
+            <li><a href="/"${active('index.html')}>Home</a></li>
             <li><a href="spirits.html"${active('spirits.html')}>Our Spirits</a></li>
             <li><a href="story.html"${active('story.html')}>Our Story</a></li>
             <li><a href="process.html"${active('process.html')}>Our Process</a></li>
             <li><a href="contact.html"${active('contact.html')}>Contact</a></li>
-            <li><a href="vibe.html"${active('vibe.html')}>Vibe</a></li>
         </ul>
+        <a href="https://www.instagram.com/ogin_distillery/" target="_blank" rel="noopener" class="nav-strip-instagram" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <img src="images/ogin-stamp.svg" alt="" class="nav-strip-stamp">
     </div>
     <header class="header">
         <nav class="nav container">
@@ -42,12 +47,12 @@
     </header>
     <div class="mobile-nav">
         <ul class="mobile-nav-links">
+            <li><a href="/">Home</a></li>
             <li><a href="spirits.html">Our Spirits</a></li>
             <li><a href="story.html">Our Story</a></li>
             <li><a href="process.html">Our Process</a></li>
             <li><a href="shop.html">Shop</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="vibe.html">Vibe</a></li>
         </ul>
     </div>`;
 
@@ -102,11 +107,21 @@
                     transitioning = false;
                 }, 250);
             } else if (!isBottom && !transitioning) {
-                // Normal top strip hide/show
-                if (hideTopZone || (scrollY > lastScroll && scrollY > 200)) {
-                    strip.classList.add('nav-hidden');
-                } else {
-                    strip.classList.remove('nav-hidden');
+                // Normal top strip hide/show (desktop only — always visible on mobile)
+                if (window.innerWidth > 768) {
+                    // Stay visible through the hero/intro area, then hide on scroll-down
+                    var introWrapper = document.querySelector('.intro-scroll-wrapper');
+                    var heroSection = document.querySelector('.product-hero-story') || document.querySelector('.hero');
+                    var threshold = introWrapper ? introWrapper.offsetHeight
+                                  : heroSection ? heroSection.offsetHeight
+                                  : 200;
+                    if (scrollY <= threshold) {
+                        strip.classList.remove('nav-hidden');
+                    } else if (hideTopZone || scrollY > lastScroll) {
+                        strip.classList.add('nav-hidden');
+                    } else {
+                        strip.classList.remove('nav-hidden');
+                    }
                 }
             }
             lastScroll = scrollY;

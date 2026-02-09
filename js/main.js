@@ -15,18 +15,21 @@
     const ageVerifyYes = document.getElementById('age-verify-yes');
     const ageVerifyNo = document.getElementById('age-verify-no');
 
-    // Check if already verified
+    // Check if already verified (expires after 14 days)
+    var FOURTEEN_DAYS = 14 * 24 * 60 * 60 * 1000;
     if (ageGate) {
-        if (localStorage.getItem('ogin-age-verified') === 'true') {
+        var verifiedAt = localStorage.getItem('ogin-age-verified');
+        if (verifiedAt && (Date.now() - Number(verifiedAt)) < FOURTEEN_DAYS) {
             ageGate.classList.add('hidden');
         } else {
+            localStorage.removeItem('ogin-age-verified');
             document.body.classList.add('no-scroll');
         }
     }
 
     if (ageVerifyYes) {
         ageVerifyYes.addEventListener('click', function() {
-            localStorage.setItem('ogin-age-verified', 'true');
+            localStorage.setItem('ogin-age-verified', String(Date.now()));
             ageGate.classList.add('hidden');
             document.body.classList.remove('no-scroll');
         });
@@ -58,7 +61,13 @@
         lastScrollY = scrollY;
     }
 
-    window.addEventListener('scroll', updateHeader, { passive: true });
+    let headerTicking = false;
+    window.addEventListener('scroll', function() {
+        if (!headerTicking) {
+            requestAnimationFrame(function() { updateHeader(); headerTicking = false; });
+            headerTicking = true;
+        }
+    }, { passive: true });
     updateHeader();
 
     /* ----------------------------------------------------------------------
@@ -81,6 +90,32 @@
                 mobileNav.classList.remove('active');
                 document.body.classList.remove('no-scroll');
             });
+        });
+    }
+
+    // Nav-strip: tap to expand/collapse on mobile (same menu as desktop)
+    const navStrip = document.querySelector('.nav-strip');
+    if (navStrip) {
+        navStrip.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                // If a link was tapped, let it navigate
+                if (e.target.closest('.nav-strip-links a, .nav-strip-instagram')) {
+                    navStrip.classList.remove('expanded');
+                    return;
+                }
+                e.preventDefault();
+                e.stopPropagation();
+                navStrip.classList.toggle('expanded');
+            }
+        });
+
+        // Close when tapping outside the strip on mobile
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768 && navStrip.classList.contains('expanded')) {
+                if (!navStrip.contains(e.target)) {
+                    navStrip.classList.remove('expanded');
+                }
+            }
         });
     }
 
@@ -154,10 +189,17 @@
     const heroMedia = document.querySelector('.hero-media');
 
     if (heroMedia && window.innerWidth > 768) {
+        let parallaxTicking = false;
         window.addEventListener('scroll', function() {
-            const scrollY = window.scrollY;
-            if (scrollY < window.innerHeight) {
-                heroMedia.style.transform = `translateY(${scrollY * 0.3}px)`;
+            if (!parallaxTicking) {
+                requestAnimationFrame(function() {
+                    const scrollY = window.scrollY;
+                    if (scrollY < window.innerHeight) {
+                        heroMedia.style.transform = `translateY(${scrollY * 0.3}px)`;
+                    }
+                    parallaxTicking = false;
+                });
+                parallaxTicking = true;
             }
         }, { passive: true });
     }
@@ -186,6 +228,28 @@
                 this.reset();
             }, 3000);
         });
+    }
+
+    /* ----------------------------------------------------------------------
+       Product Cards — In-view trigger on mobile (replaces hover)
+       ---------------------------------------------------------------------- */
+    if (window.innerWidth <= 768) {
+        const mobileCards = document.querySelectorAll('.product-card');
+        if (mobileCards.length) {
+            const cardObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target._inViewTimer = setTimeout(function() {
+                            entry.target.classList.add('in-view');
+                        }, 600);
+                    } else {
+                        clearTimeout(entry.target._inViewTimer);
+                        entry.target.classList.remove('in-view');
+                    }
+                });
+            }, { threshold: 0.5 });
+            mobileCards.forEach(function(card) { cardObserver.observe(card); });
+        }
     }
 
     /* ----------------------------------------------------------------------
@@ -280,13 +344,14 @@
         const words = wrapper.querySelectorAll('.word-reveal .word');
         const content = wrapper.querySelector('.scroll-reveal-content');
         const label = wrapper.querySelector('.intro-label');
+        const revealIcon = wrapper.querySelector('.reveal-icon');
         if (words.length) {
-            revealSections.push({ wrapper, words, content, label });
+            revealSections.push({ wrapper, words, content, label, revealIcon });
         }
     });
 
     function revealAllWords() {
-        revealSections.forEach(({ wrapper, words, content, label }) => {
+        revealSections.forEach(({ wrapper, words, content, label, revealIcon }) => {
             const total = words.length;
             const rect = wrapper.getBoundingClientRect();
             const scrollable = rect.height - window.innerHeight;
@@ -305,34 +370,20 @@
                 }
             });
 
-            // Phase 2 (80-100%): fade out
+            // Phase 2 (80-100%): fade out text, fade in icon
             const fadeProgress = Math.max(0, Math.min(1, (progress - 0.8) / 0.2));
             if (content) content.style.opacity = 1 - fadeProgress;
+            if (revealIcon) revealIcon.style.opacity = fadeProgress;
         });
     }
-    window.addEventListener('scroll', revealAllWords);
+    let revealTicking = false;
+    window.addEventListener('scroll', function() {
+        if (!revealTicking) {
+            requestAnimationFrame(function() { revealAllWords(); revealTicking = false; });
+            revealTicking = true;
+        }
+    }, { passive: true });
     revealAllWords();
-
-    /* ----------------------------------------------------------------------
-       Product Card Hover Image Swap (disabled — uncomment to re-enable)
-       ---------------------------------------------------------------------- */
-    /*
-    document.querySelectorAll('.product-card').forEach(card => {
-        const img = card.querySelector('.product-image > img[data-hover]');
-        if (!img) return;
-        const original = img.getAttribute('src');
-        const hover = img.getAttribute('data-hover');
-        // Preload hover image
-        new Image().src = hover;
-
-        card.addEventListener('mouseenter', function() {
-            img.setAttribute('src', hover);
-        });
-        card.addEventListener('mouseleave', function() {
-            img.setAttribute('src', original);
-        });
-    });
-    */
 
     /* ----------------------------------------------------------------------
        Cocktail Cards Drag to Swipe

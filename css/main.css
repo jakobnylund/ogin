@@ -1707,7 +1707,7 @@ p {
 .cocktails-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     text-align: left;
     margin-bottom: var(--space-xl);
 }
@@ -1720,7 +1720,6 @@ p {
 .cocktails-arrow {
     width: 44px;
     height: 44px;
-    border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.2);
     background: transparent;
     cursor: pointer;
@@ -1845,7 +1844,7 @@ p {
 
 @media (max-width: 768px) {
     .cocktail-card {
-        flex: 0 0 320px;
+        flex: 0 0 calc(100vw - 48px);
     }
     .cocktail-card-image {
         display: none;

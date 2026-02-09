@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="ÓGIN Distillery — The pure spirit of Swedish Lapland. Handcrafted gin and vodka from Boviken, where tradition meets innovation.">
     <title>ÓGIN Distillery — The Pure Spirit of Swedish Lapland</title>
+    <meta property="og:title" content="ÓGIN Distillery — The Pure Spirit of Swedish Lapland">
+    <meta property="og:description" content="ÓGIN Distillery — The pure spirit of Swedish Lapland. Handcrafted gin and vodka from Boviken, where tradition meets innovation.">
+    <meta property="og:url" content="https://ogindistillery.com/">
+    <meta property="og:image" content="https://ogindistillery.com/images/socialpreview.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://ogindistillery.com/images/socialpreview.jpg">
+    <link rel="canonical" href="https://ogindistillery.com/">
+    <link rel="icon" href="images/ogin.svg" type="image/svg+xml">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +22,27 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/main.css?v=51">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ÓGIN Distillery",
+      "url": "https://ogindistillery.com",
+      "logo": "https://ogindistillery.com/images/ogin.svg",
+      "description": "Handcrafted gin and vodka from Boviken, Swedish Lapland. The pure spirit of Swedish Lapland.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Boviken",
+        "addressRegion": "Swedish Lapland",
+        "addressCountry": "SE"
+      },
+      "sameAs": [
+        "https://www.instagram.com/ogin_distillery"
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Age Verification Modal -->
@@ -36,6 +66,7 @@
     <script src="js/nav.js"></script>
 
     <main>
+        <h1 class="visually-hidden">ÓGIN Distillery — The Pure Spirit of Swedish Lapland</h1>
         <!-- Hero Section -->
         <div class="scroll-reveal-wrapper intro-scroll-wrapper">
             <section class="hero">
@@ -46,7 +77,7 @@
                     </video>
                 </div>
                 <div class="hero-content" style="display: none;">
-                    <h1 class="hero-title fade-up">The <em>pure spirit</em> of Swedish Lapland</h1>
+                    <h2 class="hero-title fade-up">The <em>pure spirit</em> of Swedish Lapland</h2>
                     <p class="hero-subtitle fade-up delay-1">Where tradition meets innovation, one vintage at a time.</p>
                     <a href="spirits.html" class="btn btn-primary fade-up delay-2">Discover Our Spirits</a>
                 </div>
